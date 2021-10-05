@@ -1,4 +1,6 @@
 @import "./variabels";
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/mint.scss";
 
 body {
   font-family: "Lato" sans-serif;
@@ -62,4 +64,13 @@ section.login {
       color: $primary-hover;
     }
   }
+}
+
+.noty_theme__mint {
+  border-radius: 50px !important;
+  padding-left: 4px !important;
+}
+
+.noty_progressbar {
+  color: red;
 }
