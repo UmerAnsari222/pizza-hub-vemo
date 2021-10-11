@@ -347,3 +347,7 @@ section.login a:hover {
 .noty_progressbar {
   color: red;
 }
+
+a.link {
+  color: #fe5f1e;
+}
