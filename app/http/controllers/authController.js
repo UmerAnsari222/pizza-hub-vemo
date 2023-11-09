@@ -3,19 +3,16 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 
 function authController() {
-
   function _getRedirectUrl(req) {
-    return req.user.role === "admin" ? '/admin/orders' : '/customer/orders'
+    return req.user.role === "admin" ? "/admin/orders" : "/customer/orders";
   }
 
   return {
-
     login(req, res) {
       res.render("auth/login");
     },
 
     async postLogin(req, res, next) {
-
       const { email, password } = req.body;
 
       // validate request
@@ -25,29 +22,27 @@ function authController() {
         return res.redirect("/login");
       }
 
-      await passport.authenticate('local', (err, user, info) => {
-
+      await passport.authenticate("local", (err, user, info) => {
         if (err) {
-          req.flash('error', info.message)
-          return next(err)
+          req.flash("error", info.message);
+          return next(err);
         }
 
         if (!user) {
-          req.flash('error', info.message)
-          return res.redirect('/login')
+          req.flash("error", info.message);
+          res.setHeader("Cache-Control", "no-store");
+          return res.redirect("/login");
         }
 
         req.logIn(user, (err) => {
           if (err) {
-            req.flash('error', info.message)
-            return next(err)
+            req.flash("error", info.message);
+            return next(err);
           }
 
-          return res.redirect(_getRedirectUrl(req))
-
-        })
-      })(req, res, next)
-
+          res.redirect(_getRedirectUrl(req));
+        });
+      })(req, res, next);
     },
 
     register(req, res) {
@@ -55,7 +50,6 @@ function authController() {
     },
 
     async postRegister(req, res) {
-
       const { name, email, password } = req.body;
 
       // validate request
@@ -99,10 +93,9 @@ function authController() {
     },
 
     logout(req, res) {
-      req.logout()
-      res.redirect('/login')
-    }
-
+      req.logout();
+      res.redirect("/login");
+    },
   };
 }
 

@@ -458,3 +458,43 @@ section.status {
   font-size: 14px;
   margin-top: 8px;
 }
+
+@media (min-width: 1060px) {
+  .container {
+    max-width: 90%;
+  }
+}
+@media (min-width: 700px) {
+  .status {
+    padding: 2rem !important;
+  }
+}
+@media (min-width: 500px) {
+  .status {
+    padding: 2rem !important;
+  }
+}
+.StripeElement {
+  box-sizing: border-box;
+  width: 50%;
+  margin-left: auto;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
